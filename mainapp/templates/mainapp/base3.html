@@ -1,0 +1,132 @@
+{% load staticfiles %}
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bluesky</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Bluesky template project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+  
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'mainapp/back/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="{% static 'mainapp/back/css/bootstrap-theme.css' %}" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="{% static 'mainapp/back/css/elegant-icons-style.css' %}" rel="stylesheet" />
+  <link href="{% static 'mainapp/back/css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles -->      
+  <link href="{% static 'mainapp/back/css/style.csss' %}" rel="stylesheet">
+  <link href="{% static 'mainapp/back/css/style-responsive.csss' %}" rel="stylesheet" />
+  
+  
+  
+<link rel="stylesheet" type="text/css" href="{% static 'mainapp/styles/bootstrap4/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mainapp/plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mainapp/plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mainapp/plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mainapp/plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mainapp/styles/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mainapp/styles/responsive.css' %}">
+
+  
+  
+  
+  
+  
+</head>
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="logo">
+							<a href="#"><img src="{% static 'mainapp/images/logo.png' %}" alt=""></a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+		<div class="container">
+		{% block content %}
+			
+			
+		{% endblock content %}
+		</div>
+	
+	
+	
+	
+	
+	
+	<!-- Footer -->
+
+	<footer class="footer">
+
+		<div class="footer_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="footer_bar_content d-flex flex-row align-items-center justify-content-start">
+							<div class="cr"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</div>
+							<div class="footer_nav">
+								<ul>
+									
+									<li><a href="#">About</a></li>
+									<li><a href="#">Support Us</a></li>
+									<li><a href="#">Terms and conditions</a></li>
+								</ul>
+							</div>
+							<div class="footer_phone ml-auto"><span>call us: </span>unispace</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+
+
+
+<!-- this is base 2 -->
+  <script src="{% static 'mainapp/back/js/jquery.js' %}"></script>
+  <script src="{% static 'mainapp/back/js/bootstrap.min.jsk' %}"></script>
+  <script src="{% static 'mainapp/back/js/jquery.tagsinput.js' %}"></script>
+    <script src="{% static 'mainapp/back/js/form-component.js' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'mainapp/back/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'mainapp/back/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for       all page-->
+  <script src="{% static 'mainapp/back/js/scripts.js' %}"></script>
+  
+<script src="{% static 'mainapp/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'mainapp/styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'mainapp/styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'mainapp/plugins/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'mainapp/plugins/easing/easing.js' %}"></script>
+<script src="{% static 'mainapp/plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'mainapp/js/custom.js' %}"></script>
+
+
+
+
+</body>
+</html>

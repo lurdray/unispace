@@ -1,0 +1,69 @@
+{% extends 'mainapp/base3.html' %}
+{% load staticfiles %}
+  
+
+{% block content %}
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+	<div class="container">
+		<div class="row jumbotron">
+			<div class="col-md-4">
+				<img class="img img-circle" src="{{ result.app_user.photo.url }}" width="150px" height="120px" /><br />
+				<label class="label label-success">{{ result.app_user.name }}</label>
+				<label class="label label-success">{{ result.app_user.phone }}</label>
+			</div>
+			<div class="col-md-8">
+				<h2 style="color: darkred;">{{ result }}'s info</h2>
+				<h6>{{ result.name }} is availavble at </h6>
+				<label class="label label-primary">{{ result.university }}</label> for
+				<label class="label label-primary">N{{ result.price }}</label><br/>
+				<h8>Details are below</h8>
+			</div>
+			
+			
+		</div>
+		<div class="row">
+			<div class="col-md-7">
+				<img class="img img-rounded" src="{{ result.image2.url }}" width="230px" height="200px" />
+				<img class="img img-rounded" src="{{ result.image3.url }}" width="230px" height="200px" />
+				<img class="img img-rounded" src="{{ result.image1.url }}" width="230px" height="200px" />
+			</div>
+			<br />
+			<div class="col-md-5 jumbotron">
+				<section class="panel">
+		          <header class="panel-heading">
+		            Details
+		          </header>
+		          <div class="panel-body">
+		             <div class="panel panel-primary">
+		              <div class="panel-heading"><h4>Description</h4></div>
+		              <div class="panel-content"><h4>{{ result.description}}</h4></div>
+		            </div>
+		            <div class="panel panel-success">
+		              <div class="panel-heading"><h4>University</h4></div>
+		              <div class="panel-content"><h4>{{ result.university }}</h4></div>
+		            </div>
+		            <div class="panel panel-warning">
+		              <div class="panel-heading"><h4>Price</h4></div>
+		              <div class="panel-content"><h4>N{{ result.price }}</h4></div>
+		            </div>
+		             <div class="panel panel-primary">
+		              <div class="panel-heading"><h4>Tags</h4></div>
+		              <div class="panel-content"><h4>{{ result.tags }}</h4></div>
+		            </div>
+		          </div>
+		        </section>
+			</div>	
+		</div>	
+	</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+{% endblock content %}

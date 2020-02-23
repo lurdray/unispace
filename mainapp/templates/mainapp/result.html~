@@ -1,0 +1,83 @@
+{% extends 'mainapp/base3.html' %}
+{% load staticfiles %}
+  
+
+{% block content %}
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+              <div class="row">
+{% for result  in results %}
+
+
+
+
+
+									
+									<div class="col-md-4">
+
+									
+									<div class="owl-item">
+											<div class="recent_item">
+												<div class="recent_item_inner">
+													<div class="recent_item_image">
+														<img src="{{ result.image1.url }}"  alt=""/>
+														<div class="tag_featured property_tag"><a href="#">{{ result.apartment_type }}</a></div>
+													</div>
+													<div class="recent_item_body text-center">
+														<div class="recent_item_location">{{ result.university }}</div>
+														<div class="recent_item_title"><a class="btn btn-successs" data-toggle="modal" href="#{{ result.id }}">{{ result.name }}</a></div>
+														<div class="recent_item_price">N{{ result.price }}</div>
+													</div>
+													<div class="recent_item_footer d-flex flex-row align-items-center justify-content-start">
+														<div><div class="recent_icon"><img src="{{ result.image2.url }}"  alt=""/></div><span></span></div>
+														<div><div class="recent_icon"><img src="{{ result.image3.url }}"  alt=""/></div><span></span></div>
+														<div><div class="recent_icon"><img src="{{ result.image4.url }}"  alt=""/></div><span></span></div>
+														<div><div class="recent_icon"><img src="{{ result.image5.url }}"  alt=""/></div><span></span></div>
+														<div><div class="recent_icon"><img src="{{ result.image1.url }}"  alt=""/></div><span></span></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										 <!-- Modal -->
+										<div class="modal fade" id="{{ result.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										  <div class="modal-dialog">
+											<div class="modal-content">
+											  <div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title">{{ result }}</h4>
+											  </div>
+											  <div class="modal-body">
+
+												<img src="{{ result.image1.url }}"  width="200px" height="300px"  alt=""/>
+												<img src="{{ result.image2.url }}"  width="200px" height="300px" alt=""/>
+												<img src="{{ result.image3.url }}"  width="200px" height="300px" alt=""/>
+												<img src="{{ result.image4.url }}"  width="200px" height="300px" alt=""/>
+												<img src="{{ result.image5.url }}"  width="200px" height="300px"  alt=""/>
+
+											  </div>
+											  <div class="modal-footer">
+												<button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+												<button class="btn btn-success" type="button">Save changes</button>
+											  </div>
+											</div>
+										  </div>
+										</div>
+										<!-- modal -->
+										
+										
+										</div>
+									
+
+
+{% endfor %}
+</div>
+
+	{% endblock content %}

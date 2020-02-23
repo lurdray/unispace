@@ -1,0 +1,139 @@
+{% extends 'mainapp/base2.html' %}
+{% load staticfiles %}
+  
+
+{% block content %}
+
+          
+
+ <div class="row">
+			<div class="row label">
+			{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+						<li {% if message.tags %} class="{{ message.tags }}"{% endif%} style="color:darkred">
+							{{ message }}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			</div>
+          <div class="col-md-12 portlets">
+
+          <div class="col-md-10 portlets">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="pull-left">Quick Post (Used Products)</div>
+                <div class="widget-icons pull-right">
+                  <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
+                  <a href="#" class="wclose"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="panel-body">
+                <div class="padd">
+
+                  <div class="form quick-post">
+                    <!-- Edit profile form (not working)-->
+                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    
+                    
+                    <div class="row">
+                    
+                    <div class="col-md-8">
+                      <!-- Title -->
+                      <div class="form-group">
+                        <label class="control-label col-lg-2" for="title">Name</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="title" name="name" required="required">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-lg-2" for="content">Description</label>
+                        <div class="col-lg-10">
+                          <textarea class="form-control" id="content" name="description"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-lg-2" for="title">Price</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="title" name="price" required="required">
+                        </div>
+                      </div>
+                      <!-- Cateogry -->
+                      <div class="form-group">
+                        <label class="control-label col-lg-2">University</label>
+                        <div class="col-lg-10">
+                          <input class="form-control" list="universities" name="university" required="required">
+                          <datalist id="universities">
+                          	{% for university in universities %}
+                          		<option value={{ university.abbr }}>
+                          	{% endfor %}
+                          </datalist>
+                        </div>
+                      </div>
+      
+                        <section class="panel">
+								  <header class="panel-heading">
+								    Tags
+								  </header>
+								  <div class="panel-body">
+								    <input type="text" name="tags" id="tagsinputs" required="required" class="form-control"/>
+								  </div>
+								  <div>
+								  	<i style="color:red;"><b>Please Note:</b> separate tags with a comma. i.e " , "<br/>e.g table, bed, phone</i>
+								  </div>
+								  <div>
+								  	<i style="color:red;"><b>Please Note:</b> tags are important. They would help others to easliy find your post.</i>
+								  </div>
+						</section>
+                      <br/>
+
+                      
+                      </div>
+                      
+                      
+                      <div class="col-md-4">
+		              <b>Upload Images</b>
+		              <div class="form-group">
+		              	<div class="container">
+		                <label for="exampleInputFile">image 1</label>
+		                <input type="file" id="exampleInputFile" name="image1" required="required">
+		                <label for="exampleInputFile">image 2</label>
+		                <input type="file" id="exampleInputFile" name="image2" required="required">
+		                <label for="exampleInputFile">image 3</label>
+		                <input type="file" id="exampleInputFile" name="image3" required="required">    
+		                </div> 	
+		                <div>
+							<i style="color:red;"><b>Please Note:</b>Upload only clear Images of the Product</i>
+					  </div>
+                      </div>
+                      
+                      
+                      </div><br/>
+                      <div class="row container">
+		                  <!-- Buttons -->
+		                  <div class="form-group">
+		                    <!-- Buttons -->
+		                    <div class="col-lg-offset-2 col-lg-9">
+		                      <button type="submit" class="btn btn-primary">Post</button>
+		                      <button type="reset" class="btn btn-default">Reset</button>
+		                    </div>
+		                  </div>
+                      </div>
+                    </form>
+                  </div>
+
+
+                </div>
+                
+                
+                
+                
+                
+                
+
+{% endblock content %}
+

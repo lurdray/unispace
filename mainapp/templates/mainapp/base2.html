@@ -1,0 +1,116 @@
+{% load staticfiles %}
+  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="mainapp/back/img/favicon.png">
+
+  <title>awaye</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="{% static 'mainapp/back/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="{% static 'mainapp/back/css/bootstrap-theme.css' %}" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="{% static 'mainapp/back/css/elegant-icons-style.css' %}" rel="stylesheet" />
+  <link href="{% static 'mainapp/back/css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles -->      
+  <link href="{% static 'mainapp/back/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'mainapp/back/css/style-responsive.css' %}" rel="stylesheet" />
+  
+</head>
+
+<body>
+
+  <section id="container" class="">
+
+    <header class="header dark-bg">
+      <div class="toggle-nav">
+        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+      </div>
+      <a href="" class="logo">uni<span class="lite">space</span></a>  
+    </header>
+
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          <li class="">
+            <a class="" href="{% url 'mainapp:main' %}">
+                          <i class="icon_house_alt"></i>
+                          <span>Main</span>
+                      </a>
+          </li>
+         <li class="">
+            <a class="" href="{% url 'mainapp:postrental' %}">
+                          <i class="icon_house_alt"></i>
+                          <span>rental</span>
+                      </a>
+          </li>
+          <li class="">
+            <a class="" href="{% url 'mainapp:postroommate' %}">
+                          <i class="icon_house_alt"></i>
+                          <span>unimate</span>
+                      </a>
+          </li>
+          <li class="">
+            <a class="" href="{% url 'mainapp:postproduct' %}">
+                          <i class="icon_house_alt"></i>
+                          <span>product</span>
+                      </a>
+          </li>
+          <li class="">
+            <a class="" href="{% url 'mainapp:userlogout' %}">
+                <i class="icon_house_alt"></i>
+                <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+        <!-- sidebar menu end--> 
+      </div>
+    </aside>
+
+
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="row">
+        	<div class="container">
+			  	{% block content %}
+				{% endblock content %}
+			</div>
+
+        </div>
+      </section>
+    </section>
+    
+
+    <div class="text-right">
+      <div class="credits">
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>
+    
+    
+  </section>
+
+  <script src="{% static 'mainapp/back/js/jquery.js' %}"></script>
+  <script src="{% static 'mainapp/back/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'mainapp/back/js/jquery.tagsinput.js' %}"></script>
+    <script src="{% static 'mainapp/back/js/form-component.jss' %}"></script>
+  <!-- nice scroll -->
+  <script src="{% static 'mainapp/back/js/jquery.scrollTo.min.js' %}"></script>
+  <script src="{% static 'mainapp/back/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+  <!--custome script for       all page-->
+  <script src="{% static 'mainapp/back/js/scripts.js' %}"></script>
+
+
+</body>
+
+</html>

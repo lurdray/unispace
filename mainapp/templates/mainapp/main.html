@@ -1,0 +1,241 @@
+{% extends 'mainapp/base2.html' %}
+{% load staticfiles %}
+  
+
+{% block content %}
+			<div class="row label">
+			{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+						<li {% if message.tags %} class="{{ message.tags }}"{% endif%} style="color:darkred">
+							{{ message }}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			</div>
+        <div class="row container" style="background-color: white;">
+        
+        	</br>
+        <div class="col-md-3">
+        
+        
+        
+        <div class="profile-widget profile-widget-info img-rounded">
+              <div class="panel-body">
+                <div class="col-md-5">
+                  <h4>{{ app_user }}</h4>
+                  <div class="follow-ava">
+                    <img src="{{ app_user.photo.url }}"/>
+                  </div>
+                  <h6>Dashboard</h6>
+                  <h7>Posts: {{ apartment_no }}</h7>
+                  <h7>{{ app_user.university }}</h7>
+                  <h7>{{ app_user.phone }}</h7></br>
+                   <a class="btn btn-default" href="{% url 'mainapp:profile' %}">Edit Profile</a>
+                </div>   
+                
+              </div>
+           </div>
+        
+
+        </div>
+     
+            <div class="col-md-6">
+            
+				    <div class="row">
+					<form class="form-horizontal" method="POST">
+						{% csrf_token %}					
+						
+						<div class="form-group">
+				            <div class="col-md-3">
+				            	<select class="form-control sidebar_search_select" name="search_category">	
+									<option value="rental">Rental</option>
+									<option value="unimate">Unimate</option>
+								</select>
+							</div>
+				            <div class="col-md-6">
+				              <input placeholder="search for any where!" name="search" type="text" class="form-control round-input" required="required">
+							</div>
+							<div class="col-md-3">
+								<button type="submit" class="btn btn-primary">Search</button>
+				            </div>
+				          </div>
+					</form>
+				</div>
+				</br>
+				
+
+				            <!--carousel start-->
+            <section class="panel">
+              <div id="c-slide" class="carousel slide auto panel-body">
+                <ol class="carousel-indicators out">
+                  <li class="active" data-slide-to="0" data-target="#c-slide"></li>
+                  <li class="" data-slide-to="1" data-target="#c-slide"></li>
+                  <li class="" data-slide-to="2" data-target="#c-slide"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="item text-center active">
+                    <h3>Welcome to Unispace</h3>
+                    <div class="img">
+                    <img class="img img-rounded" style="width:100%; height:180px;" src="{% static 'mainapp/back/img/unispace5.jpg' %}" alt="">
+                  </div>
+                    <small class="">Discover Hostels that are close to your university</small>
+                  </div>
+                  <div class="item text-center">
+                    <h3>Looking for Unimates?</h3>
+                    <div class="img">
+                    <img class="img img-rounded" style="width:100%; height:180px;" src="{% static 'mainapp/back/img/unispace2.jpg' %}" alt="">
+                  </div>
+                    <small class="">Unispace has lots of Unimates to choose from</small>
+                  </div>
+                  <div class="item text-center">
+                    <h3>Enjoy the luxury of Unispace</h3>
+                    <div class="img">
+                    <img class="img img-rounded" style="width:100%; height:180px;" src="{% static 'mainapp/back/img/unispace4.jpg' %}" alt="">
+                  </div>
+                    <small class="">Invite a friend to sign up as well</small>
+                  </div>
+                </div>
+                <a data-slide="prev" href="#c-slide" class="left carousel-control">
+                                  <i class="arrow_carrot-left_alt2"></i>
+                              </a>
+                <a data-slide="next" href="#c-slide" class="right carousel-control">
+                                  <i class="arrow_carrot-right_alt2"></i>
+                              </a>
+              </div>
+            </section>
+            <!--carousel end-->
+            </div>
+            
+            <div class="col-md-3">
+        <section class="panel">
+              <header class="panel-heading">
+                Recent Post
+              </header>
+              <div class="panel-body">
+              		{% for apartment in apartments %}
+
+                <a class="btn btn-successs" data-toggle="modal" href="#{{ apartment.id }}">
+                               {{ apartment }}
+                              </a><br/>
+
+                <!-- Modal -->
+                <div class="modal fade" id="{{ apartment.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">{{ apartment }}</h4>
+                        
+                      </div>
+                      <div class="modal-body">
+                      
+                      	<div class="row jumbotron">
+                      		<b style="color: darkred;">{{ apartment }}'s Details</b>
+                      		<h6>{{ apartment.pub_date }}</h6>
+		                </div>
+                      	<div class="row container">
+                      		<div class="col-md-12">
+                      			<img src="{{ apartment.image1.url }}"  width="230px" height="200px"  alt=""/>
+								<img src="{{ apartment.image2.url }}"  width="230px" height="200px" alt=""/>
+								<img src="{{ apartment.image3.url }}"  width="230px" height="200px" alt=""/>
+								<img src="{{ apartment.image4.url }}"  width="230px" height="200px" alt=""/>
+								<img src="{{ apartment.image5.url }}"  width="230px" height="200px"  alt=""/><br />
+                      		</div>
+                      		<div class="col-md-12 jumbotron">
+                      			<section class="panel">
+								  <header class="panel-heading">
+									Details
+								  </header>
+								  <div class="panel-body">
+									<div class="panel panel-primary">
+									  <div class="panel-heading"><h4>Address</h4></div>
+									  <div class="panel-content"><h4>{{ apartment.address }}</h4></div>
+									</div>
+									<div class="panel panel-warning">
+									  <div class="panel-heading"><h4>Price</h4></div>
+									  <div class="panel-content"><h4>N{{ apartment.price }}</h4></div>
+									</div>
+									<div class="panel panel-danger">
+									  <div class="panel-heading"><h4>Type</h4></div>
+									  <div class="panel-content"><h4>{{ apartment.apartment_type }}</h4></div>
+									</div>
+									<div class="panel panel-info">
+									  <div class="panel-heading"><h4>Extras</h4></div>
+									  <div class="panel-content"><h4>{{ apartment.extras }}</h4></div>
+									</div>
+									 <div class="panel panel-primary">
+									  <div class="panel-heading"><h4>Landmarks</h4></div>
+									  <div class="panel-content"><h4>{{ apartment.landmarks }}</h4></div>
+									</div>
+								  </div>
+								</section>
+                      		</div>
+                      	
+                      	</div>
+                      									
+
+                      </div>
+                      <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal -->
+
+
+				{% endfor %}
+              </div>
+              
+              
+            </section>
+            <!--modal start-->
+            </div>
+                           
+            </div>
+            </br>
+
+            <div class="row container">
+            
+            
+            <div class="panel">
+            	<br />
+            	<h2 class=""></h2>
+            	<br />
+
+            	
+            	<div class="panel-body">
+            	
+            	{% for blog in blogs %}
+            	<div class="act-time">
+                        <div class="activity-body act-in">
+                          <span class="arrow"></span>
+                          <div class="text">
+                            <a href="#" class="activity-img"><img class="avatar" src="{% static 'mainapp/back/img/chat-avatar.jpg' %}" alt=""></a>
+                            <p class="attribution"><a href="#">unispace news</a> {{ blog.pub_date }}</p>
+                            <p><b>{{ blog.title }}</b></p>
+                            <div class="row">
+		                        <div class="col-md-5">
+		                        	<img style="width:200px; height:180px;" class="img img-rounded" src="{{ blog.image.url }}" alt="" /><br /><br />
+		                        </div>
+		                        <div class="col-md-6">
+		                        	<div class="jumbotron"><h6>{{ blog.content_brief }}</h6></div>
+		                       		<a href="{% url 'blog:detail' blog.id %}">.... more</a>
+		                        </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                 {% endfor %}
+                 
+                   </div>
+                </div>
+            </div>
+          </div>
+          
+          
+
+{% endblock content %}
+

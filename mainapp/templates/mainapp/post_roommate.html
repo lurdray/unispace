@@ -1,0 +1,224 @@
+{% extends 'mainapp/base2.html' %}
+{% load staticfiles %}
+  
+
+{% block content %}
+<div class="row">
+			<div class="row label">
+			{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+						<li {% if message.tags %} class="{{ message.tags }}"{% endif%} style="color:darkred">
+							{{ message }}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			</div>
+          <div class="col-md-12 portlets">
+
+          <div class="col-md-10 portlets">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="pull-left">Quick Post (roommate)</div>
+                <div class="widget-icons pull-right">
+                  <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
+                  <a href="#" class="wclose"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="panel-body">
+                <div class="padd">
+
+                  <div class="form quick-post">
+                    <!-- Edit profile form (not working)-->
+                    <form  class="form-horizontal" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    
+                    
+                    <div class="row">
+                    
+                    <div class="col-md-8">
+                    	 <div class="form-group">
+                        <label class="control-label col-lg-2" for="title">Host Name</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="title" name="host_name"  value="{{ app_user.name }}" required="required">
+                        </div>
+                      </div>
+                       <div class="form-group">
+                        <label class="control-label col-lg-2" for="title">Host Phone</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="title" name="host_phone"  value="{{ app_user.phone }}" required="required">
+                        </div>
+                      </div>
+                       <div class="form-group">
+		                    <label class="control-label col-lg-2" for="title">Host Language</label>
+		                    <div class="col-lg-10">
+		                      <input type="text" class="form-control" id="title" name="language"  value="{{ app_user.language }}" required="required">
+		                    </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-lg-2">Host Religion</label>
+                        <div class="col-lg-10">
+                          <select class="form-control" name="religion">
+                              <option value="Christian">Christian</option>
+                              <option value="Muslim">Muslim</option>
+                              <option value="None">None</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-lg-2" for="title">Host Department</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="title" name="department"  value="{{ app_user.department }}" required="required">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-lg-2">University</label>
+                        <div class="col-lg-10">
+                          <input class="form-control" list="universities" name="university", value="{{ app_user.university }}" required="required">
+                          <datalist id="universities">
+                          	{% for university in universities %}
+                          		<option value={{ university.abbr }}>
+                          	{% endfor %}
+                          </datalist>
+                        </div>
+                      </div>
+                      <section class="panel">
+						  <header class="panel-heading">
+							Host Hobbies
+							</header>
+							<div class="panel-body">
+								<input name="hobbies" id="tagsinputs" class="form-control" value="{{ app_user.hobbies }}"/>
+						 	 </div>
+						 	  <div>
+								  	<i style="color:red;"><b>Please Note:</b> separate Hobbies with a comma. i.e " , "<br/>e.g reading, swimming, Playstation</i>
+								  </div>
+						</section>  
+					<div class="form-group">
+                        <label class="control-label col-lg-2">How many roommates?</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control"  name="unimate_no"  value="1" required="required">
+                        </div>
+                     </div>
+					<div class="form-group">
+                        <label class="control-label col-lg-2">Duration</label>
+                        <div class="col-lg-5">
+                          <input type="text" class="form-control"  name="duration_1"  value="3" required="required">
+                        </div>
+                         <div class="col-lg-5">
+                          <select class="form-control" name="duration_2">
+                              <option value="day(s)">day(s)</option>
+                              <option value="week(s)">week(s)</option>
+                              <option value="month(s)">month(s)</option>
+                              <option value="year(s)">year(s)</option>
+                              <option value="semester(s)">semester(s)</option>
+                              <option value="session(s)">session(s)</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-lg-2" for="content">Address</label>
+                        <div class="col-lg-10">
+                          <textarea class="form-control" id="content" name="address" required="required"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-lg-2" for="content">Description</label>
+                        <div class="col-lg-10">
+                          <textarea class="form-control" id="content" name="description" required="required"></textarea>
+                        </div>
+                      </div>
+                      <section class="panel">
+						<header class="panel-heading">
+					    Landmarks
+						  </header>
+						  <div class="panel-body">
+					    <input name="landmarks" id="tagsinputs" required="required" class="form-control"/>
+					  </div>
+					   <div>
+							<i style="color:red;"><b>Please Note:</b> separate landmarks with a comma. i.e " , "<br/>e.g badagry, ajara, lagos</i>
+							  </div>
+					  <div>
+							<i style="color:red;"><b>Please Note:</b> landmarks are like tags. They would help others to easliy find your post.</i>
+					  </div>
+						</section>
+						
+                      <br/>
+                        <br/>
+
+                      
+                      </div>
+                      
+                       <div class="col-md-4">
+                      	<b>Select Extra Features</b>
+                      	
+                      {% for extra in extras %}
+		                  <div class="checkbox">  
+		                    <label>
+		                        <input name="extras" type="checkbox" value="{{ extra.name }}" class="checkbox">
+		                          {{ extra.name }}
+		                     </label>
+		                  </div>
+		              {% endfor %}
+		              <div>
+							<i style="color:red;"><b>Please Note:</b>Select only Features that are available.</i>
+					  </div>
+		              <br/>
+		              
+		              <div class="form-group">
+                        <label class="control-label col-lg-2" for="title">Lodge Name</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="title" name="apartment_name" required="required">
+                        </div>
+                      </div>
+                       <div class="form-group">
+                        <label class="control-label col-lg-2">Type</label>
+                        <div class="col-lg-10">
+                          <select class="form-control" name="apartment_type">
+                              <option value="self contain">self contain</option>
+                              <option value="bed room flat">bed room flat</option>
+                              <option value="a room and palour">a room and palour</option>
+                              <option value="duplex">duplex</option>
+                          </select>
+                        </div>
+                      </div>
+		              <b>Upload Images</b>
+		              <div class="form-group">
+		              	<div class="container">
+		                <label for="exampleInputFile">image 1</label>
+		                <input type="file" id="exampleInputFile" name="image1" required="required">
+		                <label for="exampleInputFile">image 2</label>
+		                <input type="file" id="exampleInputFile" name="image2" required="required">
+		                <label for="exampleInputFile">image 3</label>
+		                <input type="file" id="exampleInputFile" name="image3" required="required">
+      
+		                </div> 	
+		                <div>
+							<i style="color:red;"><b>Please Note:</b>Upload only clear Images of the Rooms and its surroundings</i>
+					  </div>
+                      </div>
+                      
+                      
+                      </div><br/>
+                      
+
+                      <!-- Buttons -->
+                      <div class="form-group">
+                        <!-- Buttons -->
+                        <div class="col-lg-offset-2 col-lg-9">
+                          <button type="submit" class="btn btn-primary">Post</button>
+                          <button type="reset" class="btn btn-default">Reset</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  
+                  
+
+
+                </div>
+
+{% endblock content %}
+

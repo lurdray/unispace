@@ -1,0 +1,330 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+  
+
+{% block content %}
+<div class="home">
+
+		<!-- Home Slider -->
+		<div class="home_slider_container">
+			<div class="owl-carousel owl-theme home_slider">
+				
+				<!-- Slide -->
+				<div class="owl-item" style="height: 800px;">
+					<div class="home_slider_background" style="background-image:url({% static 'mainapp/images/unispace4.jpg' %});"></div>
+					<div class="slide_containers">
+						<div class="container">
+								<br/>
+								<br/>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="slide_contents">
+										<p></p>
+										
+									</div>
+								</div>
+								<br/>
+								<div class="col-md-8">
+								<br/>
+								<br/>
+								<br/>
+								<br/>
+								<div class="slide_content">
+									<div class="home_title">Unispace</div>
+								</div>
+								<br/>
+									<div class="text-centre">
+										<form class="form-inline" method="POST">
+											{% csrf_token %}
+											
+											<select class="form-control sidebar_search_select" name="search_category">	
+												<option value="rental">Rental</option>
+												<option value="unimate">Unimate</option>
+												<option value="product">Product</option>
+											</select>
+											<input name="search" class="form-control col-md-8" type="text" placeholder="Search for any where" aria-label="Search" required="required">
+										
+											<button type="submit" class="btn btn-primary">Search</button>
+										</form>
+									</div>
+									<br />
+									<br />
+									<br />
+									<br />
+									<br/>
+
+
+									
+								<h2 style="color: white;"><a class="btn btn-primary" href="{% url 'mainapp:signup' %}">Sign up!</a>Discover hostels and Unimates that match your spec!</h2>
+								</div>
+								
+								<div class="col-md-1">
+									<div class="slide_content">
+										<p></p>
+										
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+
+
+			</div>
+		</div>
+		
+	
+	</div>
+	
+
+
+
+
+
+
+	<!-- Recent -->
+
+	<div class="recent">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title">Recent Houses</div>
+					<div class="section_subtitle">Search your dream home</div>
+				</div>
+			</div>
+			<div class="row recent_row">
+				<div class="col">
+					<div class="recent_slider_container">
+						<div class="owl-carousel owl-theme recent_slider">
+							
+							{% for apartment  in apartments %}
+							<!-- Slide -->
+							<div class="owl-item">
+								<div class="recent_item">
+									<div class="recent_item_inner">
+										<div class="recent_item_image">
+											<img src="{{ apartment.image1.url }}"  alt=""/>
+											<div class="tag_featured property_tag"><a href="#">{{ apartment.apartment_type }}</a></div>
+										</div>
+										<div class="recent_item_body text-center">
+											<div class="recent_item_location">{{ apartment.university }}</div>
+											<div class="recent_item_title"><a href="{% url 'mainapp:rental_detail' result.id %}">click to view {{ apartment.name }}</a></div>
+											<div class="recent_item_location">at {{ apartment.address }}</div>
+											<div class="recent_item_price">N{{ apartment.price }}</div>
+										</div>
+										<div class="recent_item_footer d-flex flex-row align-items-center justify-content-start">
+											<div><div class="recent_icon"><img src="{{ apartment.image2.url }}"  alt=""/></div><span></span></div>
+											<div><div class="recent_icon"><img src="{{ apartment.image3.url }}"  alt=""/></div><span></span></div>
+											<div><div class="recent_icon"><img src="{{ apartment.image4.url }}"  alt=""/></div><span></span></div>
+											<div><div class="recent_icon"><img src="{{ apartment.image5.url }}"  alt=""/></div><span></span></div>
+											<div><div class="recent_icon"><img src="{{ apartment.image1.url }}"  alt=""/></div><span></span></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							{% endfor %}
+
+
+
+
+
+						</div>
+
+						<div class="recent_slider_nav_container d-flex flex-row align-items-start justify-content-start">
+							<div class="recent_slider_nav recent_slider_prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+							<div class="recent_slider_nav recent_slider_next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+		<!-- Recent -->
+
+	<div class="recent">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title">Recent Unimates</div>
+					<div class="section_subtitle">Search your dream roomates</div>
+				</div>
+			</div>
+			<div class="row recent_row">
+				<div class="col">
+					<div class="recent_slider_container">
+						<div class="owl-carousel owl-theme recent_slider">
+							
+							{% for unimate  in unimates %}
+							<!-- Slide -->		
+									<div class="owl-item">
+											<div class="recent_item">
+												<div class="recent_item_inner">
+													<div class="recent_item_image">
+														<img src="{{ result.image1.url }}"  alt=""/>
+														<div class="tag_featured property_tag"><a href="#">{{ unimate.apartment_type }}</a></div>
+													</div>
+													<div class="recent_item_body text-center">
+														<div class="recent_item_location"><p style="color: black;">{{ unimate.app_user.name }} from <b>{{ unimate.university }}</b> needs a Unimate</p></div>
+														<div class="recent_item_title"><a class="btn btn-successs" href="{% url 'mainapp:unimate_detail' result.id %}">click to view details</a></div>
+														<div class="recent_item_price"><p>at {{ unimate.apartment_name }} | {{ unimate.address }} .</p></div>
+													</div>
+													<div class="recent_item_footer d-flex flex-row align-items-center justify-content-start">
+														<div><div class="recent_icon"><img src="{{ unimate.image2.url }}"  alt=""/></div><span></span></div>
+														<div><div class="recent_icon"><img src="{{ unimate.image3.url }}"  alt=""/></div><span></span></div>
+														<div><div class="recent_icon"><img src="{{ unimate.image1.url }}"  alt=""/></div><span></span></div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+							{% endfor %}
+
+						</div>
+
+						<div class="recent_slider_nav_container d-flex flex-row align-items-start justify-content-start">
+							<div class="recent_slider_nav recent_slider_prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+							<div class="recent_slider_nav recent_slider_next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+		<!-- Recent -->
+
+	<div class="recent">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title">Recent Products</div>
+					<div class="section_subtitle">Find many procduct</div>
+				</div>
+			</div>
+			<div class="row recent_row">
+				<div class="col">
+					<div class="recent_slider_container">
+						<div class="owl-carousel owl-theme recent_slider">
+							
+							{% for unimate  in unimates %}
+							<!-- Slide -->		
+									<div class="owl-item">
+											<div class="recent_item">
+												<div class="recent_item_inner">
+													<div class="recent_item_image">
+														<img src="{{ result.image1.url }}"  alt=""/>
+														<div class="tag_featured property_tag"><a href="#">{{ unimate.apartment_type }}</a></div>
+													</div>
+													<div class="recent_item_body text-center">
+														<div class="recent_item_location"><p style="color: black;">{{ unimate.app_user.name }} from <b>{{ unimate.university }}</b> needs a Unimate</p></div>
+														<div class="recent_item_title"><a class="btn btn-successs" href="{% url 'mainapp:unimate_detail' result.id %}">click to view details</a></div>
+														<div class="recent_item_price"><p>at {{ unimate.apartment_name }} | {{ unimate.address }} .</p></div>
+													</div>
+													<div class="recent_item_footer d-flex flex-row align-items-center justify-content-start">
+														<div><div class="recent_icon"><img src="{{ unimate.image2.url }}"  alt=""/></div><span></span></div>
+														<div><div class="recent_icon"><img src="{{ unimate.image3.url }}"  alt=""/></div><span></span></div>
+														<div><div class="recent_icon"><img src="{{ unimate.image1.url }}"  alt=""/></div><span></span></div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+							{% endfor %}
+				</div>
+
+						<div class="recent_slider_nav_container d-flex flex-row align-items-start justify-content-start">
+							<div class="recent_slider_nav recent_slider_prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+							<div class="recent_slider_nav recent_slider_next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+		<!-- Cities -->
+
+	<div class="cities">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="section_title">Unispace</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="cities_container d-flex flex-row flex-wrap align-items-start justify-content-between">
+
+			<!-- City -->
+			<div class="city">
+				<img src="{% static 'mainapp/images/unispace2.jpg' %}" alt="https://unsplash.com/@dnevozhai">
+				<div class="city_overlay">
+					<a href="#" class="d-flex flex-column align-items-center justify-content-center">
+						<div class="city_title">Comfort</div>
+						<div class="city_subtitle">Comfortable Homes are waiting for you</div>
+					</a>	
+				</div>
+			</div>
+
+			<!-- City -->
+			<div class="city">
+				<img src="{% static 'mainapp/images/unispace5.jpg' %}" alt="https://unsplash.com/@lachlanjdempsey">
+				<div class="city_overlay">
+					<a href="#" class="d-flex flex-column align-items-center justify-content-center">
+						<div class="city_title">Speed</div>
+						<div class="city_subtitle">Discover your desired houses in no time</div>
+					</a>	
+				</div>
+			</div>
+
+			<!-- City -->
+			<div class="city">
+				<img src="{% static 'mainapp/images/unispace4.jpg' %}" alt="https://unsplash.com/@hellolightbulb">
+				<div class="city_overlay">
+					<a href="#" class="d-flex flex-column align-items-center justify-content-center">
+						<div class="city_title">Keys</div>
+						<div class="city_subtitle">Unispace got all the keys</div>
+					</a>	
+				</div>
+			</div>
+
+			<!-- City -->
+			<div class="city">
+				<img src="{% static 'mainapp/images/unispace6.jpg' %}" alt="https://unsplash.com/@justinbissonbeck">
+				<div class="city_overlay">
+					<a href="#" class="d-flex flex-column align-items-center justify-content-center">
+						<div class="city_title">Choice</div>
+						<div class="city_subtitle">Unispace got your specific choice</div>
+					</a>	
+				</div>
+			</div>
+
+			
+		</div>
+	</div>
+	
+	
+	
+	
+		
+
+
+{% endblock content %}

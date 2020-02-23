@@ -1,0 +1,57 @@
+{% extends 'mainapp/base2.html' %}
+{% load staticfiles %}
+  
+
+{% block content %}
+
+          
+
+ <div class="row">
+          <div class="col-md-12 portlets">
+
+          <div class="col-md-10 portlets">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="pull-left">Unispace's blog.</div>
+                <div class="widget-icons pull-right">
+                  <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
+                  <a href="#" class="wclose"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="panel-body">
+                <div class="padd">
+
+                  <div class="form quick-post">
+                  	<div class="row">
+                  		<div class="jumbotron">
+                  			<h2>{{ blog.title }}</h2>
+                  			<a href="#">unispace news</a> {{ blog.pub_date }}</p>
+                  		</div><br />
+                  		
+                  		<div class="row container">
+		                    <div class="col-md-5">
+		                     	<img style="width:200px; height:180px;" class="img img-rounded" src="{{ blog.image.url }}" alt="" /><br /><br />
+		                   </div>
+		                   <div class="col-md-6">
+		                     	<div class="jumbotron"><h4>{{ blog.content_main }}</h4></divl>
+		                      		
+		                        </div>
+                         </div>
+                  	</div>
+                  	
+                   
+                   
+                   
+                   
+                  </div>
+                </div>
+                
+                
+                
+                
+                
+                
+
+{% endblock content %}
+

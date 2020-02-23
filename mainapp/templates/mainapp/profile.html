@@ -1,0 +1,143 @@
+{% extends 'mainapp/base2.html' %}
+{% load staticfiles %}
+  
+
+{% block content %}
+<div class="row">
+			<div class="row label">
+			{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+						<li {% if message.tags %} class="{{ message.tags }}"{% endif%}>
+							{{ message }}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			</div>
+          <div class="col-md-12 portlets">
+
+          <div class="col-md-10 portlets">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="pull-left">Edit Profile</div>
+                <div class="widget-icons pull-right">
+                  <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
+                  <a href="#" class="wclose"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="panel-body">
+                <div class="padd">
+
+                  <div class="form quick-post">
+                    <!-- Edit profile form (not working)-->
+                    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    
+                    
+                    <div class="row">
+                    
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label class="control-label col-lg-2" for="title">Name</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="title" name="profile_name" value="{{ app_user.name }}" required="required">
+                        </div>
+                      </div>
+                       <div class="form-group">
+                        <label class="control-label col-lg-2" for="title">Phone</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="title" name="profile_phone" value="{{ app_user.phone }}" required="required">
+                        </div>
+                      </div>
+                       <section class="panel">
+						  <header class="panel-heading">
+						   Languages
+						  </header>
+						  <div class="panel-body">
+						    <input name="profile_languages" id="tagsinputs" class="form-control" value="{{ app_user.language }}" required="required"/>
+						  </div>
+					</section>
+                       <div class="form-group">
+                        <label class="control-label col-lg-2" for="title">Department</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="title" name="profile_department" value="{{ app_user.department }}" required="required">
+                        </div>
+                      </div>
+                       <div class="form-group">
+                        <label class="control-label col-lg-2" for="title">University</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="title" name="profile_university" value="{{ app_user.university }}" required="required">
+                        </div>
+                      </div>
+                      <section class="panel">
+						  <header class="panel-heading">
+						   Hobbies
+						  </header>
+						  <div class="panel-body">
+						    <input name="profile_hobbies" id="tagsinputs" class="form-control" value="{{ app_user.hobbies }}" required="required" />
+						  </div>
+					</section>
+                        <br/>                   
+                      </div>
+                      
+                       <div class="col-md-4">
+                       
+		              <b>Profile Image</b>
+		              <div class="form-group">
+		              	<div class="container">
+		                <label for="exampleInputFile">photo</label>
+		                <input type="file" id="exampleInputFile" name="profile_photo" required="required">
+		                </div> 	
+                      </div>
+                      <b>School ID Card</b>
+		              <div class="form-group">
+		              	<div class="container">
+		                <label for="exampleInputFile">photo</label>
+		                <input type="file" id="exampleInputFile" name="schoolidcard_image"  required="required">
+		                </div> 	
+                      </div>
+                      <b>Voter Card </b>
+		              <div class="form-group">
+		              	<div class="container">
+		                <label for="exampleInputFile">photo</label>
+		                <input type="file" id="exampleInputFile" name="voterscard_image" required="required">
+		                </div> 	
+                      </div>
+                      <b>National ID Card</b>
+		              <div class="form-group">
+		              	<div class="container">
+		                <label for="exampleInputFile">photo</label>
+		                <input type="file" id="exampleInputFile" name="nationalidcard_image" required="required">
+		                </div> 	
+                      </div>
+                      <b>Driver Licence</b>
+		              <div class="form-group">
+		              	<div class="container">
+		                <label for="exampleInputFile">photo</label>
+		                <input type="file" id="exampleInputFile" name="driverslicence_image" required="required">
+		                </div> 	
+                      </div>
+                
+                      </div><br/>
+
+
+                      <div class="form-group">
+                        <!-- Buttons -->
+                        <div class="col-lg-offset-2 col-lg-9">
+                          <button type="submit" class="btn btn-primary">Update</button>
+                          <button type="reset" class="btn btn-default">Reset</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  
+                  
+
+
+                </div>
+
+{% endblock content %}
+
