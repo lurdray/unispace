@@ -37,7 +37,7 @@
 										</div>
 										<div class="recent_item_body text-center">
 											<div class="recent_item_location">Room for rent at {{ apartment.university }}</div>
-											<div class="recent_item_title"><a href="#">click to view</a></div>
+											<div class="recent_item_title"><a href="{% url 'mainapp:rental_detail' apartment.id %}">click to view</a></div>
 											<div class="recent_item_price">N{{ apartment.price }}</div>
 										</div>
 										<div class="recent_item_footer d-flex flex-row align-items-center justify-content-start">
@@ -85,7 +85,7 @@
 										</div>
 										<div class="recent_item_body text-center">
 											<div class="recent_item_location">Room for rent at {{ apartment.university }}</div>
-											<div class="recent_item_title"><a href="#">click to view</a></div>
+											<div class="recent_item_title"><a href="{% url 'mainapp:rental_detail' apartment.id %}">click to view</a></div>
 											<div class="recent_item_price">N{{ apartment.price }}</div>
 										</div>
 										<div class="recent_item_footer d-flex flex-row align-items-center justify-content-start">

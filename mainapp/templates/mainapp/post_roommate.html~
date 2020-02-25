@@ -188,11 +188,11 @@
 		              <div class="form-group">
 		              	<div class="container">
 		                <label for="exampleInputFile">image 1</label>
-		                <input type="file" id="exampleInputFile" name="image1" required="required">
+		                <input type="file" id="exampleInputFile" name="image1" required="required" accept="image/*">
 		                <label for="exampleInputFile">image 2</label>
-		                <input type="file" id="exampleInputFile" name="image2" required="required">
+		                <input type="file" id="exampleInputFile" name="image2" required="required" accept="image/*">
 		                <label for="exampleInputFile">image 3</label>
-		                <input type="file" id="exampleInputFile" name="image3" required="required">
+		                <input type="file" id="exampleInputFile" name="image3" required="required" accept="image/*">
       
 		                </div> 	
 		                <div>

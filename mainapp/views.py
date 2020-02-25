@@ -198,7 +198,9 @@ def ProfileView(request):
 def MainView(request):
 	form = ResultForm(data=request.POST)
 	if request.method == "POST":
-		apartments = Apartment.objects.all()
+		apartments = Apartment.objects.order_by("-pub_date")[:6]
+		unimates = RoomMate.objects.order_by("-pub_date")[:6]
+		products = Product.objects.order_by("-pub_date")[:6]
 		search = request.POST.get("search")
 		search_category = request.POST.get("search_category")
 		result_box = set([])
@@ -217,6 +219,22 @@ def MainView(request):
 						
 			context = {"results": result_box, "form": form, "apartments": apartments}
 			return render(request, "mainapp/result_rental.html", context)
+			
+		
+		elif search_category == "product":
+			results = Product.objects.all()
+			search_split = str(search.split(" "))
+		
+			for result in results:
+				for var1, var2 in zip(result.tags, search_split):
+					if var1 == var2:
+						result_box.add(result)
+						#result_box.append(result)
+					else:
+						pass
+						
+			context = {"results": result_box, "form": form, "products":products}
+			return render(request, "mainapp/result_product.html", context)
 
 		else:
 			#search_category == "unimate":
@@ -231,22 +249,26 @@ def MainView(request):
 					else:
 						pass
 						
-			context = {"results": result_box, "form": form, "apartments": apartments}
+			context = {"results": result_box, "form": form, "unimates": unimates}
 			return render(request, "mainapp/result_unimate.html", context)
 			
 			
 	else:
 		app_user = AppUser.objects.get(user__pk=request.user.id)
 		apartments = Apartment.objects.filter(app_user=app_user)
+		products = Product.objects.filter(app_user=app_user)
+		unimates = RoomMate.objects.filter(app_user=app_user)
 		
-		apartments = apartments.order_by("-pub_date")[:12]
+		apartments = apartments.order_by("-pub_date")[:3]
+		products = products.order_by("-pub_date")[:3]
+		unimates = unimates.order_by("-pub_date")[:3]
 		apartment_no = apartments.count()
 		roommates = RoomMate.objects.filter(app_user=app_user)
 		roommate_no = roommates.count()
 		blogs = Blog.objects.order_by("-pub_date")[:6]
 		
 	
-		context = {"app_user": app_user, "apartments":apartments, "apartment_no":apartment_no, "roommate_no":roommate_no, "blogs":blogs, "apartments":apartments}
+		context = {"app_user": app_user, "apartments":apartments, "apartment_no":apartment_no, "roommate_no":roommate_no, "blogs":blogs, "apartments":apartments, "products":products, "unimates":unimates}
 	
 		return render(request, "mainapp/main.html", context)
 		

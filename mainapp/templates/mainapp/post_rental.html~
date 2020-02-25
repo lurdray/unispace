@@ -124,15 +124,15 @@
 		              <div class="form-group">
 		              	<div class="container">
 		                <label for="exampleInputFile">image 1</label>
-		                <input type="file" id="exampleInputFile" name="image1" required="required">
+		                <input type="file" id="exampleInputFile" name="image1" required="required" accept="image/*">
 		                <label for="exampleInputFile">image 2</label>
-		                <input type="file" id="exampleInputFile" name="image2" required="required">
+		                <input type="file" id="exampleInputFile" name="image2" required="required" accept="image/*">
 		                <label for="exampleInputFile">image 3</label>
-		                <input type="file" id="exampleInputFile" name="image3" required="required">
+		                <input type="file" id="exampleInputFile" name="image3" required="required" accept="image/*">
 		                <label for="exampleInputFile">image 4</label>
-		                <input type="file" id="exampleInputFile" name="image4" required="required">
+		                <input type="file" id="exampleInputFile" name="image4" required="required" accept="image/*">
 		                <label for="exampleInputFile">image 5</label>
-		                <input type="file" id="exampleInputFile" name="image5" required="required">      
+		                <input type="file" id="exampleInputFile" name="image5" required="required" accept="image/*">      
 		                </div> 	
 		                <div>
 							<i style="color:red;"><b>Please Note:</b>Upload only clear Images of the Rooms and its surroundings</i>

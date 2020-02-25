@@ -52,6 +52,7 @@
 				            	<select class="form-control sidebar_search_select" name="search_category">	
 									<option value="rental">Rental</option>
 									<option value="unimate">Unimate</option>
+									<option value="product">Product</option>
 								</select>
 							</div>
 				            <div class="col-md-6">
@@ -119,6 +120,9 @@
                 <a class="btn btn-successs" data-toggle="modal" href="#{{ apartment.id }}">
                                {{ apartment }}
                               </a><br/>
+               
+                              
+                 
 
                 <!-- Modal -->
                 <div class="modal fade" id="{{ apartment.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -168,6 +172,140 @@
 									 <div class="panel panel-primary">
 									  <div class="panel-heading"><h4>Landmarks</h4></div>
 									  <div class="panel-content"><h4>{{ apartment.landmarks }}</h4></div>
+									</div>
+								  </div>
+								</section>
+                      		</div>
+                      	
+                      	</div>
+                      									
+
+                      </div>
+                      <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal -->
+                {% endfor %}
+                
+                
+                 {% for unimate in unimates %}
+
+                <a class="btn btn-successs" data-toggle="modal" href="#{{ unimate.id }}">
+                               {{ unimate }}
+                              </a><br/>
+                 <!-- Modal -->
+                <div class="modal fade" id="{{ unimate.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">{{ unimate }}</h4>
+                        
+                      </div>
+                      <div class="modal-body">
+                      
+                      	<div class="row jumbotron">
+                      		<b style="color: darkred;">{{ unimate }}'s Details</b>
+                      		<h6>{{ unimate.pub_date }}</h6>
+		                </div>
+                      	<div class="row container">
+                      		<div class="col-md-12">
+                      			<img src="{{ unimate.image1.url }}"  width="230px" height="200px"  alt=""/>
+								<img src="{{ unimate.image2.url }}"  width="230px" height="200px" alt=""/>
+								<img src="{{ unimate.image3.url }}"  width="230px" height="200px" alt=""/><br />
+                      		</div>
+                      		<div class="col-md-12 jumbotron">
+                      			<section class="panel">
+								  <header class="panel-heading">
+									Details
+								  </header>
+								  <div class="panel-body">
+									<div class="panel panel-primary">
+									  <div class="panel-heading"><h4>Address</h4></div>
+									  <div class="panel-content"><h4>{{ unimate.address }}</h4></div>
+									</div>
+									<div class="panel panel-primary">
+									  <div class="panel-heading"><h4>Description</h4></div>
+									  <div class="panel-content"><h4>{{ unimate.description }}</h4></div>
+									</div>
+									<div class="panel panel-danger">
+									  <div class="panel-heading"><h4>Type</h4></div>
+									  <div class="panel-content"><h4>{{ unimate.apartment_type }}</h4></div>
+									</div>
+									<div class="panel panel-info">
+									  <div class="panel-heading"><h4>Extras</h4></div>
+									  <div class="panel-content"><h4>{{ unimate.extras }}</h4></div>
+									</div>
+									 <div class="panel panel-primary">
+									  <div class="panel-heading"><h4>Landmarks</h4></div>
+									  <div class="panel-content"><h4>{{ unimate.landmarks }}</h4></div>
+									</div>
+								  </div>
+								</section>
+                      		</div>
+                      	
+                      	</div>
+                      									
+
+                      </div>
+                      <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal -->
+                {% endfor %}
+                
+                
+                
+                
+                {% for product in products %}
+
+                <a class="btn btn-successs" data-toggle="modal" href="#{{ product.id }}">
+                               {{ product }}
+                              </a><br/>
+                 <!-- Modal -->
+                <div class="modal fade" id="{{ product.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">{{ product }}</h4>
+                        
+                      </div>
+                      <div class="modal-body">
+                      
+                      	<div class="row jumbotron">
+                      		<b style="color: darkred;">{{ product }}'s Details</b>
+                      		<h6>{{ product.pub_date }}</h6>
+		                </div>
+                      	<div class="row container">
+                      		<div class="col-md-12">
+                      			<img src="{{ product.image1.url }}"  width="230px" height="200px"  alt=""/>
+								<img src="{{ product.image2.url }}"  width="230px" height="200px" alt=""/>
+								<img src="{{ product.image3.url }}"  width="230px" height="200px" alt=""/><br />
+                      		</div>
+                      		<div class="col-md-12 jumbotron">
+                      			<section class="panel">
+								  <header class="panel-heading">
+									Details
+								  </header>
+								  <div class="panel-body">
+									<div class="panel panel-primary">
+									  <div class="panel-heading"><h4>Description</h4></div>
+									  <div class="panel-content"><h4>{{ product.description }}</h4></div>
+									</div>
+									<div class="panel panel-warning">
+									  <div class="panel-heading"><h4>Price</h4></div>
+									  <div class="panel-content"><h4>N{{ product.price }}</h4></div>
+									</div>
+									 <div class="panel panel-primary">
+									  <div class="panel-heading"><h4>Tags</h4></div>
+									  <div class="panel-content"><h4>{{ product.tags }}</h4></div>
 									</div>
 								  </div>
 								</section>
