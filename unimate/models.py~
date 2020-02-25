@@ -47,7 +47,7 @@ class RoomMate(models.Model):
 	
 	#apartment details
 	apartment_name = models.CharField(max_length=50,  default="none")
-	apartment_type = models.CharField(max_length=10, choices=apartment_type_choice,  default="self contain")
+	apartment_type = models.CharField(max_length=30, choices=apartment_type_choice,  default="self contain")
 	address = models.CharField(max_length=50,  default="none")
 	description = models.CharField(max_length=50,  default="none")
 	landmarks = models.CharField(max_length=50,  default="none")

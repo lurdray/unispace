@@ -45,7 +45,7 @@ class Apartment(models.Model):
 	university = models.CharField(max_length=25, default="none") #in Nigeria
 	price = models.CharField(max_length=10, default="none")
 	#description = models.CharField(max_length=25, default="none")
-	apartment_type = models.CharField(max_length=10, choices=apartment_type_choice,  default="self contain")
+	apartment_type = models.CharField(max_length=30, choices=apartment_type_choice,  default="self contain")
 	app_user = models.ForeignKey(AppUser, on_delete=models.CASCADE)# changed to poster's details#########
 	poster_phone = models.CharField(max_length=25, default="none")
 	poster_name = models.CharField(max_length=25, default="none")
