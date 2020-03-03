@@ -29,9 +29,13 @@
 								<br/>
 								<br/>
 								<br/>
+								<br/>
+								<br/>
 								<div class="slide_content">
 									<div class="home_title">Unispace</div>
 								</div>
+								<br/>
+								<br/>
 								<br/>
 									<div class="text-centre">
 										<form class="form-inline" method="POST">
@@ -52,10 +56,14 @@
 									<br />
 									<br />
 									<br/>
+									<br/>
+								<br/>
+								
+									
 
 
 									
-								<h4 style="color: white;"><a class="btn btn-primary" href="{% url 'mainapp:signup' %}">Sign up!</a>Discover hostels and Unimates that match your spec!</h4>
+								<h2 style="color: white;"><a class="btn btn-primary" href="{% url 'mainapp:signup' %}">Sign up!</a>Discover hostels and Unimates that match your spec!</h2>
 								</div>
 								
 								<div class="col-md-1">
@@ -92,12 +100,14 @@
 			<div class="row">
 				<div class="col">
 					<div class="section_title">Find Unispace, Unimate and Uni-Product</div>
-					<div class="section_subtitle">What we offer!</div>
+					<div class="section_subtitle">Discover what we offer!</div>
 				</div>
 			</div>
+			
 			<div class="row recent_row jumbotron" style="background-image:url({% static 'mainapp/images/unispace3.jpg' %});">
 			
 							<!-- Slide -->
+							{% if apartment %}
 						<div class="col-md-4">
 							<badge class="badge badge-danger">Unispace</badge><br/>
 							<div class="owl-item">
@@ -105,11 +115,11 @@
 									<div class="recent_item_inner">
 										<div class="recent_item_image">
 											<img src="{{ apartment.image1.url }}"  alt=""/>
-											<div class="tag_featured property_tag"><a href="#">{{ apartment.apartment_type }}</a></div>
+											<div class="tag_featured property_tag"><a href="{% url 'mainapp:rental_detail' apartment.id %}">{{ apartment.apartment_type }}</a></div>
 										</div>
 										<div class="recent_item_body text-center">
 											<div class="recent_item_location">Room for rent at {{ apartment.university }}</div>
-											<div class="recent_item_title"><a href="#">click to view</a></div>
+											<div class="recent_item_title"><a href="{% url 'mainapp:rental_detail' apartment.id %}">click to view</a></div>
 											<div class="recent_item_price">N{{ apartment.price }}</div>
 										</div>
 										<div class="recent_item_footer d-flex flex-row align-items-center justify-content-start">
@@ -122,7 +132,9 @@
 								</div>
 							</div>
 						</div>
+						{% endif %}
 						
+						{% if unimate %}
 						<div class="col-md-4">
 								<badge class="badge badge-primary">Unimate</badge><br/>
 									<div class="owl-item">
@@ -145,8 +157,9 @@
 											</div>
 										</div>
 							</div>
+							{% endif %}
 							
-							
+							{% if product %}
 							<div class="col-md-4">
 								<badge class="badge badge-success">Uni-Product</badge><br/>
 									<div class="owl-item">
@@ -169,7 +182,7 @@
 											</div>
 										</div>
 							</div>
-						
+						{% endif %}
 						
 						
 						
@@ -179,6 +192,7 @@
 						
 							
 			</div>
+			
 		</div>
 	</div>
 	

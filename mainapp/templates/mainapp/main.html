@@ -42,8 +42,10 @@
         </div>
      
             <div class="col-md-6">
-            
+            	
+            		
 				    <div class="row">
+				    </br>
 					<form class="form-horizontal" method="POST">
 						{% csrf_token %}					
 						
@@ -112,7 +114,7 @@
             <div class="col-md-3">
         <section class="panel">
               <header class="panel-heading">
-                Recent Post
+                Recent Post <a href="{% url 'mainapp:all_post' %}" class="btn btn-primary">All</a>
               </header>
               <div class="panel-body">
               		{% for apartment in apartments %}

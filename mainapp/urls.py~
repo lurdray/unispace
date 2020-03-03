@@ -6,7 +6,6 @@ app_name = "mainapp"
 
 urlpatterns = [
 	path("", views.IndexView, name="index"),
-	path("result/", views.ResultView, name="result"),
 	path("signup/", views.SignUpView, name="signup"),
 	path("login/", views.LoginView, name="login"),
 	
@@ -21,6 +20,8 @@ urlpatterns = [
 	
 	path("postproduct/", views.PostProductView, name="postproduct"),
 	url(r"^product/(?P<product_id>[0-9]+)/$", views.ProductDetailView, name="product_detail"),
+	
+	path("allpost/", views.AllPostView, name="all_post"),
 	
 	path("about/", views.AboutView, name="about"),
 	path("termsandcondition/", views.TacView, name="tac"),

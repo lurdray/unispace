@@ -1,0 +1,39 @@
+{% extends 'mainapp/base2.html' %}
+{% load staticfiles %}
+  
+
+{% block content %}
+	<div class="row">
+			<div class="row label">
+			{% if messages %}
+				<ul class="messages">
+					{% for message in messages %}
+						<li {% if message.tags %} class="{{ message.tags }}"{% endif%} style="color:darkred">
+							{{ message }}
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			</div>
+          <div class="col-md-12 portlets">
+
+          <div class="col-md-10 portlets">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="pull-left">All Posts</div>
+                <div class="widget-icons pull-right">
+                  <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
+                  <a href="#" class="wclose"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="panel-body">
+                <div class="padd">
+
+                  all post here!
+
+
+                </div>
+
+
+{% endblock %}

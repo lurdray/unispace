@@ -106,68 +106,38 @@ def IndexView(request):
 		products = Product.objects.order_by("-pub_date")[:6]
 		search = request.POST.get("search")
 		search_category = request.POST.get("search_category")
-		result_box = set([])
-		#result_box = []
-		if search_category == "rental":
-			results = Apartment.objects.all()
-			search_split = str(search.split(" "))
 		
-			for result in results:
-				for var1, var2 in zip(result.landmarks, search_split):
-					if var1 == var2:
-						result_box.add(result)
-						#result_box.append(result)
-					else:
-						pass
-						
-			context = {"results": result_box, "form": form, "apartments": apartments}
-			return render(request, "mainapp/result_rental.html", context)
+		if search_category == "rental":
+			results = Apartment.objects.filter(landmarks__icontains=search)	
+			context = {"results": results, "form": form, "apartments": apartments}
+			#return render(request, "mainapp/result_rental.html", context)
+			temp_file = "mainapp/result_rental.html"
 			
 		elif search_category == "product":
-			results = Product.objects.all()
-			search_split = str(search.split(" "))
-		
-			for result in results:
-				for var1, var2 in zip(result.tags, search_split):
-					if var1 == var2:
-						result_box.add(result)
-						#result_box.append(result)
-					else:
-						pass
-						
-			context = {"results": result_box, "form": form, "products": products}
-			return render(request, "mainapp/result_product.html", context)
+			results = Product.objects.filter(tags__icontains=search)		
+			context = {"results": results, "form": form, "products": products}
+			#return render(request, "mainapp/result_product.html", context)
+			temp_file = "mainapp/result_product.html"
 
 		else:
-			#search_category == "unimate":
-			results = RoomMate.objects.all()
-			search_split = str(search.split(" "))
+			results = RoomMate.objects.filter(landmarks__icontains=search)
+			context = {"results": results, "form": form, "unimates": unimates}
+			temp_file = "mainapp/result_unimate.html"
 			
-			for result in results:
-				for var1, var2 in zip(result.landmarks, search_split):
-					if var1 == var2:
-						result_box.add(result)
-						#result_box.append(result)
-					else:
-						pass
-						
-			context = {"results": result_box, "form": form, "unimates": unimates}
-			return render(request, "mainapp/result_unimate.html", context)
+		return render(request, temp_file, context)
 
 	else:
-		apartment = Apartment.objects.order_by("-pub_date")[0]
-		unimate = RoomMate.objects.order_by("-pub_date")[0]
-		product = Product.objects.order_by("-pub_date")[0]
-		context = {"apartment": apartment, "unimate": unimate, "product": product, "form": form}
+		try:
+			apartment = Apartment.objects.order_by("-pub_date")[0]
+			unimate = RoomMate.objects.order_by("-pub_date")[0]
+			product = Product.objects.order_by("-pub_date")[0]
+			context = {"apartment": apartment, "unimate": unimate, "product": product, "form": form}
+		except:
+			context = {"form": form}
 		#return HttpResponse(apartments)
 		return render(request, "mainapp/index.html", context)
 	
-def ResultView(request):
-	if request.method == "POST":
-		pass	
-	else:
-		return HttpResponse("fuck off!!!!")
-		
+
 def ProfileView(request):
 	form = ProfileForm(request.POST or None, request.FILES or None)
 	app_user = AppUser.objects.get(user__pk=request.user.id)
@@ -194,6 +164,21 @@ def ProfileView(request):
 		context = {"app_user": app_user, "form":form}
 	
 		return render(request, "mainapp/profile.html", context)
+		
+def AllPostView(request):
+	
+	app_user = AppUser.objects.get(user__pk=request.user.id)
+	apartments = Apartment.objects.filter(app_user=app_user)
+	products = Product.objects.filter(app_user=app_user)
+	unimates = RoomMate.objects.filter(app_user=app_user)
+		
+	apartments = apartments.order_by("-pub_date")
+	products = products.order_by("-pub_date")
+	unimates = unimates.order_by("-pub_date")
+
+	context = {"app_user": app_user, "apartments":apartments, "products":products, "unimates":unimates}	
+	return render(request, "mainapp/all_post.html", context)
+	
 	
 def MainView(request):
 	form = ResultForm(data=request.POST)
@@ -203,56 +188,27 @@ def MainView(request):
 		products = Product.objects.order_by("-pub_date")[:6]
 		search = request.POST.get("search")
 		search_category = request.POST.get("search_category")
-		result_box = set([])
-		#result_box = []
+
 		if search_category == "rental":
-			results = Apartment.objects.all()
-			search_split = str(search.split(" "))
-		
-			for result in results:
-				for var1, var2 in zip(result.landmarks, search_split):
-					if var1 == var2:
-						result_box.add(result)
-						#result_box.append(result)
-					else:
-						pass
-						
-			context = {"results": result_box, "form": form, "apartments": apartments}
-			return render(request, "mainapp/result_rental.html", context)
+			results = Apartment.objects.filter(landmarks__icontains=search)	
+			context = {"results": results, "form": form, "apartments": apartments}
+			#return render(request, "mainapp/result_rental.html", context)
+			temp_file = "mainapp/result_rental.html"
 			
-		
 		elif search_category == "product":
-			results = Product.objects.all()
-			search_split = str(search.split(" "))
-		
-			for result in results:
-				for var1, var2 in zip(result.tags, search_split):
-					if var1 == var2:
-						result_box.add(result)
-						#result_box.append(result)
-					else:
-						pass
-						
-			context = {"results": result_box, "form": form, "products":products}
-			return render(request, "mainapp/result_product.html", context)
+			results = Product.objects.filter(tags__icontains=search)		
+			context = {"results": results, "form": form, "products": products}
+			#return render(request, "mainapp/result_product.html", context)
+			temp_file = "mainapp/result_product.html"
 
 		else:
-			#search_category == "unimate":
-			results = RoomMate.objects.all()
-			search_split = str(search.split(" "))
+			results = RoomMate.objects.filter(landmarks__icontains=search)
+			context = {"results": results, "form": form, "unimates": unimates}
+			temp_file = "mainapp/result_unimate.html"
 			
-			for result in results:
-				for var1, var2 in zip(result.landmarks, search_split):
-					if var1 == var2:
-						result_box.add(result)
-						#result_box.append(result)
-					else:
-						pass
-						
-			context = {"results": result_box, "form": form, "unimates": unimates}
-			return render(request, "mainapp/result_unimate.html", context)
-			
-			
+		return render(request, temp_file, context)
+		
+		
 	else:
 		app_user = AppUser.objects.get(user__pk=request.user.id)
 		apartments = Apartment.objects.filter(app_user=app_user)
