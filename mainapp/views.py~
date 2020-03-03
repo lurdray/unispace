@@ -101,27 +101,44 @@ def TacView(request):
 def IndexView(request):
 	form = ResultForm(data=request.POST)
 	if request.method == "POST":
-		apartments = Apartment.objects.order_by("-pub_date")[:6]
-		unimates = RoomMate.objects.order_by("-pub_date")[:6]
-		products = Product.objects.order_by("-pub_date")[:6]
+		try:
+			apartments = Apartment.objects.order_by("-pub_date")[:6]
+			unimates = RoomMate.objects.order_by("-pub_date")[:6]
+			products = Product.objects.order_by("-pub_date")[:6]
+			
+		except:
+			pass
+			
+		
 		search = request.POST.get("search")
 		search_category = request.POST.get("search_category")
 		
 		if search_category == "rental":
-			results = Apartment.objects.filter(landmarks__icontains=search)	
-			context = {"results": results, "form": form, "apartments": apartments}
+			results = Apartment.objects.filter(landmarks__icontains=search)
+			
+			if apartments:
+				context = {"results": results, "form": form, "apartments": apartments}
+			else:
+				context = {"results": results, "form": form}
 			#return render(request, "mainapp/result_rental.html", context)
 			temp_file = "mainapp/result_rental.html"
 			
 		elif search_category == "product":
 			results = Product.objects.filter(tags__icontains=search)		
-			context = {"results": results, "form": form, "products": products}
+			
+			if products:
+				context = {"results": results, "form": form, "products": products}
+			else:
+				context = {"results": results, "form": form}
 			#return render(request, "mainapp/result_product.html", context)
 			temp_file = "mainapp/result_product.html"
 
 		else:
 			results = RoomMate.objects.filter(landmarks__icontains=search)
-			context = {"results": results, "form": form, "unimates": unimates}
+			if unimates:
+				context = {"results": results, "form": form, "unimates": unimates}
+			else:
+				context = {"results": results, "form": form}
 			temp_file = "mainapp/result_unimate.html"
 			
 		return render(request, temp_file, context)
