@@ -10,14 +10,33 @@
 		<br/>
 		<br/>
 		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 		<div class="container">
 		
-		this is the about page
+			<div class="row jumbotron">
+
+					<h3>About Unispace</h3>
+					<br />
+					<p>Unispace is web application that offers its users a platform where they can connect with hostel agents, find available hostels for rent, discover room mates(unimates) and find product posted for sale.</p>
+
+				
+			</div>
 		
 		
 		</div>
 		
 		
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 		<br/>
 		<br/>
 		<br/>

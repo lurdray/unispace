@@ -32,7 +32,7 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="logo">
-							<a href="#"><img src="{% static 'mainapp/images/logo.png' %}" alt=""></a>
+							<a href="{% url 'mainapp:index' %}" style="color:white;"><h3>Unispace</h3></a>
 						</div>
 						<nav class="main_nav">
 							<ul>
@@ -42,6 +42,7 @@
 								<li><a href="{% url 'mainapp:login' %}">Login</a></li>
 							</ul>
 						</nav>
+						<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
 					</div>
 				</div>
 			</div>
@@ -61,13 +62,12 @@
 				</a>
 			</div>
 			<ul>
-					<li><a href="{% url 'mainapp:signup' %}">Sign up</a></li>
-					<li><a href="{% url 'mainapp:about' %}">About</a></li>
-					<li><a href="{% url 'mainapp:tac' %}">Terms and conditions</a></li>
-					<li><a href="{% url 'mainapp:login' %}">Login</a></li>
+					<li><a  style="color:white;" href="{% url 'mainapp:signup' %}">Sign up</a></li>
+					<li><a style="color:white;" href="{% url 'mainapp:about' %}">About</a></li>
+					<li><a style="color:white;"  href="{% url 'mainapp:tac' %}">Terms and conditions</a></li>
+					<li><a style="color:white;" href="{% url 'mainapp:login' %}">Login</a></li>
 			</ul>
 		</div>
-		<div class="menu_phone"><span>call us: </span>652 345 3222 11</div>
 	</div>
 	
 	
@@ -99,13 +99,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<ul>
 									
 									<li><a href="{% url 'mainapp:signup' %}">Sign up</a></li>
-									<li><a href="#">About</a></li>
-									<li><a href="#">Support Us</a></li>
-									<li><a href="#">Terms and conditions</a></li>
+									<li><a href="{% url 'mainapp:about' %}">About</a></li>
+									<li><a href="{% url 'mainapp:tac' %}">Terms and conditions</a></li>
 									<li><a href="{% url 'mainapp:login' %}">Login</a></li>
 								</ul>
 							</div>
-							<div class="footer_phone ml-auto"><span>call us: </span>unispace</div>
 						</div>
 					</div>
 				</div>
